@@ -140,7 +140,10 @@ http://127.0.0.1:8000
 ## Resultado del Sistema
 
 register
+<img width="926" height="830" alt="register" src="https://github.com/user-attachments/assets/d131e60f-ef34-408b-b7e1-ae8f38957510" />
+
 login
+<img width="860" height="722" alt="login" src="https://github.com/user-attachments/assets/9d851df4-3d41-489a-a2bf-efa0547ee48a" />
 
 ---
 
