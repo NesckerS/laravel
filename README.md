@@ -7,53 +7,208 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## About Laravel
+Documentacion de registro con Laravel
+# Laboratorio: Autenticación con Laravel Breeze
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+---
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Introducción
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Este laboratorio tiene como objetivo implementar un sistema de autenticación (registro, login y control de acceso) utilizando Laravel. Se trabajó bajo la arquitectura MVC (Modelo-Vista-Controlador):
 
-## Learning Laravel
+* Modelos: Representan la estructura de la base de datos (ej. User).
+* Vistas: Interfaz de usuario (Blade templates).
+* Controladores: Gestionan la lógica de la aplicación.
+* Rutas: Definen los endpoints del sistema.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Laravel facilita la integración de estos componentes mediante su estructura organizada y herramientas integradas.
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+---
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+## Objetivo del Laboratorio
 
-## Agentic Development
+Implementar un sistema funcional de autenticación utilizando Laravel Breeze, incluyendo:
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+* Registro de usuarios
+* Inicio de sesión
+* Protección de rutas
+* Manejo de sesiones
+
+---
+
+## Prerrequisitos
+
+### Ecosistema de desarrollo
+
+* PHP 8.3 o superior
+* Composer (última versión estable)
+* Laravel Installer o Composer
+* Servidor local (XAMPP / WampServer / Laragon)
+* Servidor web: Apache o Nginx
+* Base de datos: MySQL/MariaDB
+* Editor: Visual Studio Code
+* NPM (Node.js)
+
+### Sistema Operativo
+
+* Windows 10 / 11
+
+---
+
+## Instalación y Configuración
+
+### 1. Crear proyecto
 
 ```bash
-composer require laravel/boost --dev
-
-php artisan boost:install
+laravel new mi_app
 ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+### 2. Entrar al proyecto
 
-## Contributing
+```bash
+cd mi_app
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### 3. Instalar dependencias
 
-## Code of Conduct
+```bash
+composer install
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### 4. Configurar entorno
 
-## Security Vulnerabilities
+```bash
+cp .env.example .env
+php artisan key:generate
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Editar `.env`:
 
-## License
+```env
+DB_DATABASE=mi_app
+DB_USERNAME=root
+DB_PASSWORD=
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+---
+
+## Instalación de Autenticación (Breeze)
+
+```bash
+composer require laravel/breeze --dev
+php artisan breeze:install blade
+npm install
+npm run dev
+```
+
+---
+
+## Migraciones
+
+```bash
+php artisan migrate
+```
+
+En caso de error:
+
+```bash
+php artisan migrate:fresh
+```
+
+---
+
+## Ejecución del proyecto
+
+```bash
+php artisan serve
+```
+
+Acceder en:
+http://127.0.0.1:8000
+
+---
+
+## Estructura del Proyecto (MVC)
+
+* app/Models → Modelos (ej. User)
+* app/Http/Controllers → Controladores
+* resources/views → Vistas (Blade)
+* routes/web.php → Rutas
+
+---
+
+## Resultado del Sistema
+
+register
+login
+
+---
+
+## Base de Datos
+
+* Motor: MySQL
+* Configuración en `.env`
+* Migraciones utilizadas:
+
+bash
+php artisan migrate
+
+
+### Backup
+
+Se incluye un respaldo de la base de datos en el repositorio.
+
+---
+
+## Dificultades y Soluciones
+
+Error: PHP version incompatible
+Solución: actualizar PHP a 8.3
+
+Error: tabla users ya existe
+Solución:
+
+```bash
+php artisan migrate:fresh
+```
+
+Error: tabla sessions no existe
+Solución:
+
+```bash
+php artisan session:table
+php artisan migrate
+```
+
+Error: key too long
+Solución:
+
+```php
+Schema::defaultStringLength(191);
+```
+
+---
+
+## Referencias
+
+https://laravel.com/docs
+https://getcomposer.org/
+https://www.php.net/
+
+---
+
+## Autor
+
+Este laboratorio ha sido desarrollado por el estudiante de la Universidad Tecnológica de Panamá:
+
+Nombre: Nescker Santana
+Correo: nescker.santana@utp.ac.pa
+Curso: Desarrollo de Software VII
+Instructor del Laboratorio: Irina Fong
+
+---
+
+## Fecha de Ejecución
+
+14 de abril de 2026
 
